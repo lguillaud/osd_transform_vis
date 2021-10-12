@@ -1,4 +1,4 @@
-*Forked from https://github.com/gwintzer/transform_vis.*
+*Forked (ported) from https://github.com/gwintzer/transform_vis.*
 
 An Opensearch visualization plugin that allows arbitrary queries results to be processed by a [Mustache](https://mustache.github.io/) transform.
 You can also call any external JS library to build new visualisations: Google Chart, d3js, ...
@@ -13,7 +13,7 @@ You can also call any external JS library to build new visualisations: Google Ch
 Installation for Openserach Dashboards 1.1.0:
 
 ```
-bin/opensearch-dashboards-plugin install https://github.com/.../releases/download/1.1.0/transform_vis-1.1.0.zip
+bin/opensearch-dashboards-plugin install https://github.com/lguillaud/osd_transform_vis/releases/download/1.1.0/transformVis-1.1.0.zip
 ```
 
 ## Variable Binding
