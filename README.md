@@ -8,7 +8,7 @@ You can also call any external JS library to build new visualisations: Google Ch
 * [Support for CSS](#support-for-css)
 * [Query DSL](#query-dsl)
 * [Debugging](#debugging)
-* [Google Chart Sample](google-chart-sample)
+* [Google Chart Sample](#google-chart-sample)
 
 Installation for Openserach Dashboards 1.1.0:
 
