@@ -1,3 +1,5 @@
+*Forked from https://github.com/gwintzer/transform_vis.*
+
 An Opensearch visualization plugin that allows arbitrary queries results to be processed by a [Mustache](https://mustache.github.io/) transform.
 You can also call any external JS library to build new visualisations: Google Chart, d3js, ...
 
