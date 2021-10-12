@@ -1,0 +1,46 @@
+{
+  "name": "transform_vis",
+  "version": "1.1.0",
+  "description": "Transform Visualization",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "keywords": [
+    "kibana",
+    "transform_vis",
+    "plugin"
+  ],
+  "scripts": {
+    "osd": "node ../../scripts/osd",
+    "es": "node ../../scripts/es",
+    "build": "yarn plugin-helpers build",
+    "plugin-helpers": "node ../../scripts/plugin_helpers",
+    "lint": "../../node_modules/.bin/eslint .",
+    "start": "node ../../scripts/plugin_helpers start --oss --no-watch",
+    "test:server": "node ../../scripts/plugin_helpers test:server",
+    "test:browser": "node ../../scripts/plugin_helpers test:browser"
+  },
+
+  "devDependencies": {
+    "@elastic/eui": "29.3.2",
+    "@types/babel__standalone": "^7.1.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-mocha": "^6.2.2",
+    "eslint-plugin-no-unsanitized": "^3.0.2",
+    "eslint-plugin-prefer-object-spread": "^1.2.1",
+    "eslint-plugin-react": "^7.20.3",
+    "typescript": "4.0.2"
+  },
+  "dependencies": {
+    "@babel/standalone": "7.9.4",
+    "@webcomponents/shadydom": "^1.6.0",
+    "brace": "0.11.1",
+    "mustache": "^2.3.2",
+    "react-shadow": "^16.3.2",
+    "timefilter": "^1.0.0"
+  }
+}
