@@ -16,6 +16,10 @@ Installation for Openserach Dashboards 1.1.0:
 bin/opensearch-dashboards-plugin install https://github.com/lguillaud/osd_transform_vis/releases/download/1.1.0/transformVis-1.1.0.zip
 ```
 
+## Kibana advanced setting
+
+It is required to set "Store URLs in session storage" to true in kibana advanced settings.
+
 ## Variable Binding
 
 The object passed to the mustache template looks like this:
