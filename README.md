@@ -1,4 +1,4 @@
-*Forked (ported) from https://github.com/gwintzer/transform_vis.*
+*Forked (ported) from https://github.com/gwintzer/transform_vis and https://github.com/bjacomy/transform_vis* - Special thanks to these contributors who kept this plugin working for al Kibana versions.
 
 An Opensearch visualization plugin that allows arbitrary queries results to be processed by a [Mustache](https://mustache.github.io/) transform.
 You can also call any external JS library to build new visualisations: Google Chart, d3js, ...
