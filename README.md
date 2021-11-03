@@ -3,7 +3,7 @@
 An Opensearch visualization plugin that allows arbitrary queries results to be processed by a [Mustache](https://mustache.github.io/) transform.
 You can also call any external JS library to build new visualisations: Google Chart, d3js, ...
 
-* [Prerequisites](#prerequisistes)
+* [Prerequisites](#prerequisites)
 * [Installation](#installation)
 * [Plugin presentation](#plugin-presentation)
 * [Visualisation samples](#visualisation-samples)
@@ -254,7 +254,7 @@ Template:
 
 
 
-## Samples
+## Visualisation samples
 
 A new directory sample_vizs is now available with the following visualisations:
 
