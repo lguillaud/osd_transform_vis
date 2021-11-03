@@ -60,12 +60,16 @@ bin/opensearch-dashboards-plugin install https://github.com/lguillaud/osd_transf
 
 By running this command, a new visualization `transform` will be available when using the Visualize module in OpenSearch Dashboards.
 
+![Transform visualisation](./images/transform_plugin.png)
+
 ## Plugin presentation
 
 The plugin is split into 2 parts:
-* a development window with 3 different tabs: Multi Query DSL, Javascript and Template
 
+* a development window with 3 different tabs: Multi Query DSL, Javascript and Template
 * a visualisation window
+
+![Plugin aspect](./images/visualize_transform.png)
 
 ### Basic usage
 
@@ -264,10 +268,10 @@ Template
 
 A new directory sample_vizs is now available with the following visualisations:
 
-* sample_decisionTree.ndjson: Decision tree with D3js lib
+* sample_decisionTree.ndjson: Decision tree with D3js lib (https://fractalytics.io/visualization-scikit-learn-decision-trees-d3-js)
 * sample_googleChartGauge.ndjson: Gauge with Google Chart (requires sample data `opensearch_dashboards_sample_data_ecommerce`). Also need to change time filter to "Last 1 year" as set to "last 15 minutes" by default, otherwise you will get an *Error (See Console)* on the visualisation window. 
 * sample_googleChartScatterAndControlIframe.ndjson: Scatter chart with Goofle Chart byt using Iframe (might be required in a few cases when there are JS librairies conflicts)
-* sample_sankey.ndjson: Sankey with D3js lib
+* sample_sankey.ndjson: Sankey with D3js lib (https://www.d3-graph-gallery.com/graph/sankey_basic.html)
 * sample_saveCSVToOpensearch.ndjson: Import CSV file into an OpenSearch index 
 
 **How to load ndjson files ?** Open OpenSearch Dashboards > Stack Management > Saved Objects > Import > Select ndjson file to import > Click Import
@@ -277,4 +281,10 @@ A new directory sample_vizs is now available with the following visualisations:
 > Note: Most of the examples do not have a query to get data from Opensearch as data used are hardcoded in the Javascript part but you might need to import sample data for some visualisations.
 
 To import sample data: go to OpenSearch Dashboards > Click on the logo on the top left corner > Ingest your data > Add data > Choose sample data to add and click `Add Data`.
+
+![Decision tree](./images/decision_tree.png)
+![Gauge](./images/gauge.png)
+![Scatter chart](./images/scatter.png)
+![Sankey](./images/sankey.png)
+![CSV import](./images/importcsv.png)
 
