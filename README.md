@@ -207,52 +207,64 @@ A dedicated function will be used to retrieve the shadow DOM information.
 Javascript
 ```sh
 ({
-after_render: function() {
-    $.getScript("https://d3js.org/d3.v3.min.js")
-        .done(function(script, textStatus) {
-            function getShadowDomLocation(selector) {
-                let vizLocation;
-                // output-viz being the top selector used by the Transform plugin
-                // Get all the output-viz elements (can have mutliple selector if multiple transfrm vizs in a dashboard)
-                // selector parameter value must be unque within the DOM
-                const elements = $('.output-vis');
-                let shadow;
-                for (let elem of elements) {
-                    shadow = elem.shadowRoot;
-                    vizLocation = $(shadow).find(selector);
-                    if (vizLocation.length > 0) {
-                    // selector found, exiting
-                    break;
-                    } else {
-                    vizLocation = '.notFound';
-                    }
-                } 
-                const obj = {
-                vizLocation: vizLocation,
-                shadowRoot: shadow
-                }
-                // obj object contains the shadowRoot element and and the location of the selector within the shadowRoot
-                return obj; 
-            }
-            
-            // Get shadow DOM
-            let ctxRadar = getShadowDomLocation("#viz").vizLocation[0];
-
-            let sampleSVG = d3.select(ctxRadar)
-                .append("svg")
-                .attr("width", 100)
-                .attr("height", 100);    
-
-            sampleSVG.append("circle") 
-                .style("stroke", "gray") 
-                .style("fill", "white")
-                .attr("r", 40)
-                .attr("cx", 50)
-                .attr("cy", 50)
-                .on("mouseover", function(){d3.select(this).style("fill", "aliceblue");})
-                .on("mouseout", function(){d3.select(this).style("fill", "white");});
-         });
+getShadowDomLocation: function(selector) {
+  let vizLocation;
+  // output-viz being the top selector used by the Transform plugin
+  // Get all the output-viz elements (can have mutliple selector if multiple transfrm vizs in a dashboard)
+  // selector parameter value must be unque within the DOM
+  const elements = $('.output-vis');
+  let shadow;
+  for (let elem of elements) {
+      shadow = elem.shadowRoot;
+      vizLocation = $(shadow).find(selector);
+      if (vizLocation.length > 0) {
+      // selector found, exiting
+        break;
+      } else {
+        vizLocation = '.notFound';
+      }
+  } 
+  const obj = {
+    vizLocation: vizLocation,
+    shadowRoot: shadow
     }
+// obj object contains the shadowRoot element and and the location of the selector within the shadowRoot
+  return obj;
+},
+
+after_render: function() {
+  // Save this.meta Object for further use
+  // Will be used to call the getShadowDomLocation function
+  const meta = this.meta;
+  
+  function displayCircle() {
+    // Get shadow DOM
+    let ctxRadar = meta.getShadowDomLocation("#viz").vizLocation[0];
+    
+    // Clear ctxRadar to avoid multiple circles
+    $(ctxRadar).empty();
+    
+    let sampleSVG = d3.select(ctxRadar)
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 100);    
+    
+    sampleSVG.append("circle") 
+      .style("stroke", "gray")  
+      .style("fill", "white")
+      .attr("r", 40)
+      .attr("cx", 50)
+      .attr("cy", 50)
+      .on("mouseover", function(){d3.select(this).style("fill", "aliceblue");})
+      .on("mouseout", function(){d3.select(this).style("fill", "white");});
+  }
+  
+  $.getScript("https://d3js.org/d3.v3.min.js")
+    .done(function(script, textStatus) {
+      displayCircle();
+  });
+
+}
 }) 
 ```
 
