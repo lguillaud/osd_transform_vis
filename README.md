@@ -3,6 +3,8 @@
 An Opensearch visualization plugin that allows arbitrary queries results to be processed by a [Mustache](https://mustache.github.io/) transform.
 You can also call any external JS library to build new visualisations: Google Chart, d3js, ...
 
+**[See OpenSearch Community Projects](https://opensearch.org/community_projects)**
+
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
 * [Plugin presentation](#plugin-presentation)
@@ -81,7 +83,7 @@ From the Javascript object, they are available via `this`, e.g., `this.response`
 
 Any Javascript given will be executed by the web browser, however in order to be merged with the query response object for processing by Mustache, you must prepare an Object, enclosed by parentheses like this:
 
-**Javascript**
+Javascript
 ```sh
 ({
  some_var: 42,
@@ -91,7 +93,7 @@ Any Javascript given will be executed by the web browser, however in order to be
 })
 ```
 
-**Template**
+Template
 Named functions can then be called by mustache, like:
 ```
 <hr>{{meta.count_hits}} total hits<hr>
@@ -106,7 +108,7 @@ The `before_render` and `after_render` lifecycle hooks will be called automatica
 
 Another to load css files is to use a JS function (e.g. for FontAwesome):
 
-**Javascript**
+Javascript
 
 ```sh
 css: function() {  
@@ -194,7 +196,7 @@ When used in an OpenSearch Dashboard dashboard, we need to make sure we access t
 To do so, here are the javascript lines in charge of getting the right DOM. In this example, we need to find out where the `viz` ID is located in the shadow DOM in order to pass the location to the D3js function.
 A dedicated function will be used to retrieve the shadow DOM information.
 
-**Javascript**
+Javascript
 ```sh
 ({
 after_render: function() {
@@ -246,7 +248,7 @@ after_render: function() {
 }) 
 ```
 
-Template:
+Template
 ```
 <div id="viz"> </div>
 ```
