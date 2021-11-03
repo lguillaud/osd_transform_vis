@@ -61,8 +61,10 @@ bin/opensearch-dashboards-plugin install https://github.com/lguillaud/osd_transf
 By running this command, a new visualization `transform` will be available when using the Visualize module in OpenSearch Dashboards.
 
 ## Plugin presentation
+
 The plugin is split into 2 parts:
 * a development window with 3 different tabs: Multi Query DSL, Javascript and Template
+
 * a visualisation window
 
 ### Basic usage
@@ -138,6 +140,7 @@ This example is given to demonstrate how the dashboard context can co-exist with
 
 The following code produces multi-level bool statement:
 
+Query DSL
 ```
 {
   	"ordersPerDay": {
@@ -161,6 +164,7 @@ The following code produces multi-level bool statement:
 
 You can dump the response object to a `<pre>` tag in your visualization output while testing, for convenience.
 
+Javascript
 ```
 ({
  count_hits: function() {
@@ -172,7 +176,7 @@ You can dump the response object to a `<pre>` tag in your visualization output w
 })
 ```
 
-Mustache:
+Template
 
 ```
 <hr>
@@ -261,7 +265,7 @@ Template
 A new directory sample_vizs is now available with the following visualisations:
 
 * sample_decisionTree.ndjson: Decision tree with D3js lib
-* sample_googleChartGauge.ndjson: Gauge with Google Chart (requires sample `data opensearch_dashboards_sample_data_ecommerce`). Also need to change time filter to "Last 1 year" as set to "last 15 minutes" by default, otherwise you will get an *Error (Eee Console)* on the visualisation window. 
+* sample_googleChartGauge.ndjson: Gauge with Google Chart (requires sample data `opensearch_dashboards_sample_data_ecommerce`). Also need to change time filter to "Last 1 year" as set to "last 15 minutes" by default, otherwise you will get an *Error (See Console)* on the visualisation window. 
 * sample_googleChartScatterAndControlIframe.ndjson: Scatter chart with Goofle Chart byt using Iframe (might be required in a few cases when there are JS librairies conflicts)
 * sample_sankey.ndjson: Sankey with D3js lib
 * sample_saveCSVToOpensearch.ndjson: Import CSV file into an OpenSearch index 
