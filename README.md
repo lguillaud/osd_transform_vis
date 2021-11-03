@@ -60,7 +60,7 @@ bin/opensearch-dashboards-plugin install https://github.com/lguillaud/osd_transf
 
 By running this command, a new visualization `transform` will be available when using the Visualize module in OpenSearch Dashboards.
 
-![Transform visualisation](./images/transform_plugin.png)
+![Transform visualisation](./images/visualize_transform.png)
 
 ## Plugin presentation
 
@@ -69,7 +69,7 @@ The plugin is split into 2 parts:
 * a development window with 3 different tabs: Multi Query DSL, Javascript and Template
 * a visualisation window
 
-![Plugin aspect](./images/visualize_transform.png)
+![Plugin aspect](./images/transform_plugin.png)
 
 ### Basic usage
 
