@@ -261,8 +261,15 @@ Template
 A new directory sample_vizs is now available with the following visualisations:
 
 * sample_decisionTree.ndjson: Decision tree with D3js lib
-* sample_googleChartGauge.ndjson: Gauge with Google Chart
+* sample_googleChartGauge.ndjson: Gauge with Google Chart (requires sample `data opensearch_dashboards_sample_data_ecommerce`). Also need to change time filter to "Last 1 year" as set to "last 15 minutes" by default, otherwise you will get an *Error (Eee Console)* on the visualisation window. 
 * sample_googleChartScatterAndControlIframe.ndjson: Scatter chart with Goofle Chart byt using Iframe (might be reuqired in a few cases when there are JS librairies conflicts)
 * sample_sankey.ndjson: Sankey with D3js lib
 * sample_saveCSVToOpensearch.ndjson: Import CSV file into an OpenSearch index 
+
+How to load ndjson files ? Open OpenSearch Dashboards > Stack Management > Saved Objects > Import > Select ndjson file to import > Click Import
+How to open the samples once loaded ? Open OpenSearch Dashboards > Visualize > Click on the visualization you just imported
+
+> Note: Most of the examples do not have a query to get data from Opensearch as data used are hardcoded in the Javascript part but you might need to import sample data for some visualisations.
+
+To import sample data: go to OpenSearch Dashboards > Click on the logo on the top left corner > Ingest your data > Add data > Choose sample data to add and click `Add Data`.
 
