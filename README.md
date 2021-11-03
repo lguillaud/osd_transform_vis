@@ -282,9 +282,22 @@ A new directory sample_vizs is now available with the following visualisations:
 
 To import sample data: go to OpenSearch Dashboards > Click on the logo on the top left corner > Ingest your data > Add data > Choose sample data to add and click `Add Data`.
 
+###  Decision tree
+
 ![Decision tree](./images/decision_tree.png)
+
+### Gauge
+
 ![Gauge](./images/gauge.png)
+
+### Scatter chart and control
+
 ![Scatter chart](./images/scatter.png)
+
+### Sankey
+
 ![Sankey](./images/sankey.png)
+
+### CSV import (pure JS)
 ![CSV import](./images/importcsv.png)
 
