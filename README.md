@@ -87,7 +87,12 @@ From mustache, you can access these variables directly.
 From the Javascript object, they are available via `this`, e.g., `this.response`
 `<script>` tags will not be evaluated.  
 
-Any Javascript given will be executed by the web browser, however in order to be merged with the query response object for processing by Mustache, you must prepare an Object, enclosed by parentheses like this:
+Any Javascript given will be executed by the web browser, however in order to be merged with the query response object for processing by Mustache, you must prepare an Object, enclosed by parentheses.
+
+
+Functions called by mustache are executed before the actual render on the page, so no DOM manipulation can be done.   
+The `before_render` and `after_render` lifecycle hooks will be called automatically. The former can be used for any pre-processing that might be required before rendering, and the latter should be used for anything that expects the HTML to be rendered.
+
 
 ### Example to display single value
 
@@ -186,9 +191,6 @@ Template
 
 Result
 ![table](./images/sample_table.png)
-
-Functions called by mustache are executed before the actual render on the page, so no DOM manipulation can be done.   
-The `before_render` and `after_render` lifecycle hooks will be called automatically. The former can be used for any pre-processing that might be required before rendering, and the latter should be used for anything that expects the HTML to be rendered.
 
 #### Support for CSS
 
