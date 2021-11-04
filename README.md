@@ -87,7 +87,8 @@ The object passed to the mustache template looks like this:
 ```
 
 From mustache, you can access these variables directly.
-From the Javascript object, they are available via `this`, e.g., `this.response`
+From the Javascript object, they are available via `this`, e.g., `this.response`.
+
 `<script>` tags will not be evaluated.  
 
 Any Javascript given will be executed by the web browser, however in order to be merged with the query response object for processing by Mustache, you must prepare an Object, enclosed by parentheses.
@@ -115,7 +116,7 @@ Named functions can then be called by mustache, like:
 <hr>{{meta.count_hits}} total hits<hr>
 ```
 
-### Example to diplay Bootstrap table
+### Example to display Bootstrap table
 
 Multi Query DSL
 ```
