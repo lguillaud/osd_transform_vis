@@ -89,6 +89,8 @@ From the Javascript object, they are available via `this`, e.g., `this.response`
 
 Any Javascript given will be executed by the web browser, however in order to be merged with the query response object for processing by Mustache, you must prepare an Object, enclosed by parentheses like this:
 
+### Example to display single value
+
 Javascript
 ```sh
 ({
@@ -104,6 +106,86 @@ Named functions can then be called by mustache, like:
 ```
 <hr>{{meta.count_hits}} total hits<hr>
 ```
+
+### Example to diplay Bootstrap table
+
+Multi Query DSL
+```
+{
+  "sample": {
+    "index": "opensearch_dashboards_sample_data_ecommerce",
+    "query": {
+      "bool": {
+        "must": [
+          "_DASHBOARD_CONTEXT_",
+          "_TIME_RANGE_[order_date]"
+        ]
+      }
+    },
+    "aggs": {
+      "customer": {
+        "terms": {
+          "field": "customer_full_name.keyword",
+            "size": 5
+        }
+      }
+    }
+  }
+}
+```
+
+Javascript 
+```
+({
+  ecommerce: function() {
+    return this.response.sample.aggregations.customer.buckets;
+  }
+})
+```
+
+Template
+```
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<h2>List of best buyers from response</h2>
+<table class="table caption-top">
+  <thead>
+    <tr>
+      <th scope="col">Full name</th>
+      <th scope="col">Number or orders</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#response.sample.aggregations.customer.buckets}} 
+    <tr>
+      <th scope="row">{{key}}</th>
+      <td>{{doc_count}}</td>
+    </tr>
+    {{/response.sample.aggregations.customer.buckets}} 
+    </tbody>
+</table>
+
+<h2>List of best buyers from function</h2>
+<table class="table caption-top">
+  <thead>
+    <tr>
+      <th scope="col">Full name</th>
+      <th scope="col">Number or orders</th>
+    </tr>
+  </thead> 
+  <tbody>
+    {{#meta.ecommerce}} 
+    <tr>
+      <th scope="row">{{key}}</th>
+      <td>{{doc_count}}</td>
+    </tr>
+    {{/meta.ecommerce}} 
+    </tbody>
+</table>
+```
+
+Result
+![table](./images/sample_table.png)
 
 Functions called by mustache are executed before the actual render on the page, so no DOM manipulation can be done.   
 The `before_render` and `after_render` lifecycle hooks will be called automatically. The former can be used for any pre-processing that might be required before rendering, and the latter should be used for anything that expects the HTML to be rendered.
