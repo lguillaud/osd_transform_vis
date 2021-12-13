@@ -1,6 +1,6 @@
 {
   "id": "transformVis",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "server": true,
   "ui": true,
   "requiredPlugins": ["navigation","data","opensearchDashboardsReact","opensearchDashboardsUtils", "visualizations", "expressions","visDefaultEditor"],
