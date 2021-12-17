@@ -373,6 +373,7 @@ A new directory sample_vizs is now available with the following visualisations:
 * sample_googleChartScatterAndControlIframe.ndjson: Scatter chart with Goofle Chart byt using Iframe (might be required in a few cases when there are JS librairies conflicts)
 * sample_sankey.ndjson: Sankey with D3js lib (https://www.d3-graph-gallery.com/graph/sankey_basic.html)
 * sample_saveCSVToOpensearch.ndjson: Import CSV file into an OpenSearch index 
+* sample_map_openstreetmap_leaflet.ndjson: Openstreetmap with leaflet
 
 **How to load ndjson files ?** Open OpenSearch Dashboards > Stack Management > Saved Objects > Import > Select ndjson file to import > Click Import
 
@@ -401,3 +402,5 @@ To import sample data: go to OpenSearch Dashboards > Click on the logo on the to
 ### CSV import (pure JS)
 ![CSV import](./images/importcsv.png)
 
+### Openstreetmap
+![Openstreetmap with leaflet](./images/openstreetmap.png)
