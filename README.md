@@ -374,6 +374,7 @@ A new directory sample_vizs is now available with the following visualisations:
 * sample_sankey.ndjson: Sankey with D3js lib (https://www.d3-graph-gallery.com/graph/sankey_basic.html)
 * sample_saveCSVToOpensearch.ndjson: Import CSV file into an OpenSearch index 
 * sample_map_openstreetmap_leaflet.ndjson: Openstreetmap with leaflet
+* sample_map_openstreetmap_leaflet_custom_geojson.ndjson: Openstreetmap with leaflet and custom GeoJSON layer (french departments)
 
 **How to load ndjson files ?** Open OpenSearch Dashboards > Stack Management > Saved Objects > Import > Select ndjson file to import > Click Import
 
@@ -404,3 +405,6 @@ To import sample data: go to OpenSearch Dashboards > Click on the logo on the to
 
 ### Openstreetmap
 ![Openstreetmap with leaflet](./images/openstreetmap.png)
+
+### Openstreetmap with custom GeoJSON layer
+![Openstreetmap with custom GeoJSON layer with leaflet](./images/openstreetmap_custom_geojson.png)
