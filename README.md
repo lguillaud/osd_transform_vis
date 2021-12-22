@@ -37,7 +37,7 @@ csp.warnLegacyBrowsers: false
 csp.rules:
   - "script-src 'unsafe-eval' 'unsafe-inline' https://www.gstatic.com/ https://d3js.org/ https://cdn.jsdelivr.net/ https://cdnjs.cloudflare.com/ https://cdn.datatables.net/ 'self'
   - "worker-src blob: *"
-  - "child-src blob: *"
+  - "child-src data: * blob: *"
 ```
 
 ### OpenSearch (optional)
