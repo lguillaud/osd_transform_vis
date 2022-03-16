@@ -375,6 +375,7 @@ A new directory sample_vizs is now available with the following visualisations:
 * sample_saveCSVToOpensearch.ndjson: Import CSV file into an OpenSearch index 
 * sample_map_openstreetmap_leaflet.ndjson: Openstreetmap with leaflet
 * sample_map_openstreetmap_leaflet_custom_geojson.ndjson: Openstreetmap with leaflet and custom GeoJSON layer (french departments)
+* sample_boostedOrangeSampleIframe.ndjson: sample accordion component from Orange Boosted (within Iframe) (https://boosted.orange.com/)
 
 **How to load ndjson files ?** Open OpenSearch Dashboards > Stack Management > Saved Objects > Import > Select ndjson file to import > Click Import
 
@@ -408,3 +409,6 @@ To import sample data: go to OpenSearch Dashboards > Click on the logo on the to
 
 ### Openstreetmap with custom GeoJSON layer
 ![Openstreetmap with custom GeoJSON layer with leaflet](./images/openstreetmap_custom_geojson.png)
+
+### Boosted sample
+![OrangeBoosted accordion sample](./images/boosted.png)
