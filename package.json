@@ -1,6 +1,6 @@
 {
   "name": "transform_vis",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Transform Visualization",
   "main": "index.js",
   "license": "Apache-2.0",
@@ -21,7 +21,7 @@
   },
 
   "devDependencies": {
-    "@elastic/eui": "34.6.0",
+    "@elastic/eui": "npm:@opensearch-project/oui@1.0.0",
     "@types/babel__standalone": "^7.1.2",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
