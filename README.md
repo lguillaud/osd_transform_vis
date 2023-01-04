@@ -413,3 +413,6 @@ To import sample data: go to OpenSearch Dashboards > Click on the logo on the to
 
 ### Boosted sample
 ![OrangeBoosted accordion sample](./images/boosted.png)
+
+### Apache Echart Sankey sample
+![Apache Echart Sankey sample](./images/apacheEchartSankey.png)
