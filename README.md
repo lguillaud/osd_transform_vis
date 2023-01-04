@@ -4,7 +4,7 @@
 ## Transform plugin
 
 An Opensearch visualization plugin that allows arbitrary queries results to be processed by a [Mustache](https://mustache.github.io/) transform.
-You can also call any external JS library to build new visualisations: Google Chart, d3js, ...
+You can also call any external JS library to build new visualisations: Google Chart, d3js, Apache Echart...
 
 **[See OpenSearch Community Projects](https://opensearch.org/community_projects)**
 
@@ -376,6 +376,7 @@ A new directory sample_vizs is now available with the following visualisations:
 * sample_map_openstreetmap_leaflet.ndjson: Openstreetmap with leaflet
 * sample_map_openstreetmap_leaflet_custom_geojson.ndjson: Openstreetmap with leaflet and custom GeoJSON layer (french departments)
 * sample_boostedOrangeSampleIframe.ndjson: sample accordion component from Orange Boosted (within Iframe) (https://boosted.orange.com/)
+* sample_sankey_with_apache_echart.ndjson: sample sankey using the Apache Echart library (https://echarts.apache.org/examples/en/editor.html?c=sankey-levels)
 
 **How to load ndjson files ?** Open OpenSearch Dashboards > Stack Management > Saved Objects > Import > Select ndjson file to import > Click Import
 
