@@ -377,6 +377,7 @@ A new directory sample_vizs is now available with the following visualisations:
 * sample_map_openstreetmap_leaflet_custom_geojson.ndjson: Openstreetmap with leaflet and custom GeoJSON layer (french departments)
 * sample_boostedOrangeSampleIframe.ndjson: sample accordion component from Orange Boosted (within Iframe) (https://boosted.orange.com/)
 * sample_sankey_with_apache_echart.ndjson: sample sankey using the Apache Echart library (https://echarts.apache.org/examples/en/editor.html?c=sankey-levels)
+* sample_tabulator.ndjson: sample table with enriched content (https://tabulator.info/)
 
 **How to load ndjson files ?** Open OpenSearch Dashboards > Stack Management > Saved Objects > Import > Select ndjson file to import > Click Import
 
@@ -416,3 +417,6 @@ To import sample data: go to OpenSearch Dashboards > Click on the logo on the to
 
 ### Apache Echart Sankey sample
 ![Apache Echart Sankey sample](./images/apacheEchartSankey.png)
+
+### Tabulator sample
+![Tabulator sample](./images/tabulator.png)
