@@ -197,10 +197,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@elastic/eui@npm:@opensearch-project/oui@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@opensearch-project/oui/-/oui-1.0.0.tgz#bf5e115c8d0f230415b07cc6acfb149ab081c5de"
-  integrity sha512-J709UQc7+il4y3aiqpHzeLOJAQhN6xEGLLHq4sUL3WHTsP37acONINXCpRNMa3FxZ+ChOd2ABmY+Ajs+fIgmug==
+"@elastic/eui@npm:@opensearch-project/oui@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@opensearch-project/oui/-/oui-1.1.2.tgz#38ebe687d856715f3a5d8662505e67966e1e3617"
+  integrity sha512-+gLzltuSjhR2Uz0DGaqYOysoh7WG9I+LvAZnYeyFsYxeAhvDmd5mLggyBWciqwj0h5yDJUV6uEuf9k88WiyAGA==
   dependencies:
     "@types/chroma-js" "^2.0.0"
     "@types/lodash" "^4.14.160"
