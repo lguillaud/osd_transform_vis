@@ -20,30 +20,66 @@ You can also call any external JS library to build new visualisations: Google Ch
 
 #### Client side
 
-On the OpenSearch Dashboards client side (**Stack Management > Advanced Settings**), enable the `state:storeInSessionStorage` option in order to avoid the following error message: *"The URL for this object is too long, and we can't display it"*.
+On the OpenSearch Dashboards client side (**Stack Management > Advanced Settings**), enable the `state:storeInSessionStorage` option in order to avoid the following error message: *"The URL for this object is too long, and we can't display it"*. URL state stored in a browser session may not be available when sharing the URL with another browser.
 
 #### Server side
 
-By default, no unsafe HTML (such as `<style>` tags) will be allowed, but Javascript processing can be achieved by acknowledging the client-side security risk in `opensearch_dashboards.yml`. 
-Morevover, access to external libraries can also be allowed by adding the required root URLs in the configuration (the list given below is not exhaustive). 
+By default, the Content Security Policy (CSP) blocks JavaScript evaluation. This plugin uses `eval` to run the JavaScript entered in a visualization, so allow `unsafe-eval` in `opensearch_dashboards.yml`. The example below keeps the strict policy for other CSP directives and allows the listed script sources. Only add origins that you trust.
 
 Add the following lines into your `opensearch_dashboards.yml` file: 
 
 ```sh
-# server.cors: true is normally the default value but required in case you you need to access Opensearch from JS code (e.g. XHR requests) along with the opensearch configuration next section.
-server.cors: true
-
-csp.strict: false
-csp.warnLegacyBrowsers: false
+# Include only the script origins your visualizations need.
 csp.rules:
-  - "script-src 'unsafe-eval' 'unsafe-inline' https://www.gstatic.com/ https://d3js.org/ https://cdn.jsdelivr.net/ https://cdnjs.cloudflare.com/ https://cdn.datatables.net/ 'self'
-  - "worker-src blob: *"
-  - "child-src data: * blob: *"
+  - "script-src 'unsafe-eval' 'unsafe-inline' 'self' https://www.gstatic.com/ https://d3js.org/ https://cdn.jsdelivr.net/ https://cdnjs.cloudflare.com/ https://cdn.datatables.net/"
+csp.loosenCspDirectives:
+  - "script-src"
+csp.enable: true
 ```
+
+Restart OpenSearch Dashboards after changing the configuration. In the browser console, confirm the active `script-src` policy includes `'unsafe-eval'` if JavaScript visualizations are still blocked.
+
+> **Security warning:** This allows visualization code to execute in users' browsers. Only use visualizations from trusted sources, and do not enable this on an instance where untrusted users can create or edit visualizations.
+
+#### Additional CSP settings for the bundled examples
+
+The examples use external stylesheets, fonts and images as well as inline styles.
+For OpenSearch Dashboards 3.9.0, the following example extends the configuration
+above. Merge these entries into the existing lists; do not define `csp.rules` or
+`csp.loosenCspDirectives` twice.
+
+```yaml
+csp.rules:
+  - "script-src 'unsafe-eval' 'unsafe-inline' 'self' https://www.gstatic.com/ https://d3js.org/ https://cdn.jsdelivr.net/ https://cdnjs.cloudflare.com/ https://cdn.datatables.net/"
+  - "style-src-elem 'self' 'unsafe-inline' https://www.gstatic.com https://cdn.jsdelivr.net https://unpkg.com https://use.fontawesome.com https://stackpath.bootstrapcdn.com https://cdn.datatables.net"
+  - "font-src 'self' https://cdn.jsdelivr.net https://use.fontawesome.com"
+csp.allowedImgSources:
+  - "https://a.tile.openstreetmap.org"
+  - "https://b.tile.openstreetmap.org"
+  - "https://c.tile.openstreetmap.org"
+  - "https://unpkg.com"
+csp.nonceDirectives: []
+csp.loosenCspDirectives:
+  - "script-src"
+  - "style-src-elem"
+  - "font-src"
+csp.enable: true
+```
+
+This example permits inline `<style>` elements without hashes. The empty
+`csp.nonceDirectives` list prevents a style nonce from causing browsers to ignore
+`'unsafe-inline'`. This weakens CSS injection protections for the entire
+Dashboards instance, not only this plugin; use it only in trusted environments.
+For a stricter policy, keep the default style nonce and allow specific styles
+using hashes or trusted external stylesheets. Remove origins for examples you
+do not use. The decision tree's image
+URLs use HTTP and currently redirect to missing images; the policy above does
+not allow them. Replace them with images hosted over HTTPS from a trusted
+source and allow that source if needed.
 
 ### OpenSearch (optional)
 
-The configuration for Opensearch (server side) in only required in case you need to access Opensearch from JS code (e.g. XHR requests).
+The OpenSearch CORS configuration below is only needed if visualization JavaScript makes requests directly to OpenSearch from the browser. Requests through the OpenSearch Dashboards server do not require it.
 
 Add the following lines into your `opensearch.yml` file:
 
@@ -104,6 +140,8 @@ The plugin is split into 2 parts:
 
 * a development window with 3 different tabs: Multi Query DSL, Javascript and Template
 * a visualisation window
+
+The Multi Query DSL and JavaScript editors check syntax locally and display errors in the editor. They do not use Ace's background validation workers; this avoids conflicts with the OpenSearch Dashboards Console plugin. These checks do not provide all Ace lint warnings.
 
 ![Plugin aspect](./images/transform_plugin.png)
 

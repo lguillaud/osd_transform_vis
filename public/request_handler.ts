@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-import { transform } from '@babel/standalone';
 import { IUiSettingsClient } from 'opensearch-dashboards/public';
 import Mustache from 'mustache';
 import { TimefilterSetup } from '../../../src/plugins/data/public/query/timefilter';
@@ -9,13 +8,7 @@ import { InjectedMetadataSetup } from '../../../src/core/public/injected_metadat
 import { opensearchQuery, TimeRange, Query, Filter } from '../../../src/plugins/data/public';
 import { VisParams } from '../../../src/plugins/visualizations/public';
 import { TransformVisData } from './types';
-
-const babelTransform = (code: string) => {
-  return transform(code, {
-    presets: ['es2015'],
-    plugins: ['transform-async-to-generator'],
-  }).code;
-};
+import { babelTransform } from './babel_transform';
 
 export function getTransformRequestHandler(
   {
