@@ -10,6 +10,7 @@ You can also call any external JS library to build new visualisations: Google Ch
 
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
+* [Building the plugin package](#building-the-plugin-package)
 * [Plugin presentation](#plugin-presentation)
 * [Visualisation samples](#visualisation-samples)
 
@@ -64,6 +65,38 @@ bin/opensearch-dashboards-plugin install https://github.com/lguillaud/osd_transf
 By running this command, a new visualization `transform` will be available when using the Visualize module in OpenSearch Dashboards.
 
 ![Transform visualisation](./images/visualize_transform.png)
+
+## Building the plugin package
+
+1. Use an OpenSearch Dashboards source checkout matching the version you want to
+   target, with this plugin in `plugins/osd_transform_vis`. Install the Node.js
+   version specified in the checkout's `.node-version` and the Yarn version
+   specified in its `package.json`.
+2. Check the plugin version and compatibility settings in `package.json` and
+   `opensearch_dashboards.json`. They must be appropriate for the target
+   OpenSearch Dashboards version. The plugin helpers can synchronize these files
+   with the checkout using `yarn plugin-helpers version --sync` from the plugin
+   directory; review the resulting changes before building.
+3. From the OpenSearch Dashboards root, install dependencies and build its
+   internal packages:
+
+   ```sh
+   yarn osd bootstrap
+   ```
+
+   Repeat this step after updating the checkout or its dependencies. In
+   particular, a Joi error such as `Method no longer accepts array arguments:
+   extend` can indicate stale internal package output.
+4. Build the archive from the plugin directory:
+
+   ```sh
+   cd plugins/osd_transform_vis
+   yarn build
+   ```
+
+   The build replaces the plugin's `build` and `target` directories. The
+   resulting archive is `build/transformVis-<OpenSearch-Dashboards-version>.zip`;
+   for example, `build/transformVis-3.9.0.zip` when targeting version 3.9.0.
 
 ## Plugin presentation
 
