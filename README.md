@@ -81,13 +81,14 @@ source and allow that source if needed.
 
 The OpenSearch CORS configuration below is only needed if visualization JavaScript makes requests directly to OpenSearch from the browser. Requests through the OpenSearch Dashboards server do not require it.
 
-Add the following lines into your `opensearch.yml` file:
+For local development, add the following lines to `opensearch.yml`, adjusting
+the allowed origin to match the browser's OpenSearch Dashboards URL:
 
 ```sh
 http.cors.enabled : true
-http.cors.allow-origin: "*"
+http.cors.allow-origin: "http://localhost:5601"
 http.cors.allow-methods : OPTIONS, HEAD, GET, POST, PUT, DELETE
-http.cors.allow-headers: "kbn-version, Origin, X-Requested-With, Content-Type, Accept, Engaged-Auth-Token Authorization"
+http.cors.allow-headers: "kbn-version, Origin, X-Requested-With, Content-Type, Accept, Engaged-Auth-Token, Authorization"
 ```
 
 ## Installation
@@ -475,6 +476,31 @@ To import sample data: go to OpenSearch Dashboards > Click on the logo on the to
 ![Sankey](./images/sankey.png)
 
 ### CSV import (pure JS)
+
+For a local, unsecured OpenSearch instance listening on the browser's
+`http://localhost:9200`, this example uses that address directly. Add the
+following to `opensearch_dashboards.yml` and restart OpenSearch Dashboards:
+
+```yaml
+csp.allowedConnectSources:
+  - "http://localhost:9200"
+```
+
+OpenSearch must also allow cross-origin requests from OpenSearch Dashboards,
+including the `Authorization` header. The example sends credentials from the
+browser; HTTP does not encrypt them. Use this configuration only in an
+isolated test environment, without real credentials. `localhost` refers to
+the machine running the browser. For other environments, configure the
+appropriate address, CORS and CSP, and use HTTPS; do not put real credentials
+in visualization code. Some browsers also require permission for the
+Dashboards page to access local network or loopback addresses.
+
+If the example was already imported, reimport the updated visualization or
+change its `os_host` JavaScript variable manually. The Sankey export also
+contains a copy of the CSV visualization and other saved objects; review
+conflicts before importing it. The CSV import action writes to OpenSearch;
+use a test index.
+
 ![CSV import](./images/importcsv.png)
 
 ### Openstreetmap
